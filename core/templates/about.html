@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+    <h1>The webapp to make for your tasks</h1>
+    <p>Do you want add some tasks?</p>
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="Add task">
+    </form>
+{% endblock %}

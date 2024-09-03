@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<!-- add tasks-->
+<div>
+<h1>Here you can add your tasks</h1>
+<form method="post">
+    {% csrf_token %}
+    {{forms.task}}
+    <input type="submit">
+
+</form>
+</div>
+
+<!-- show tasks and delete -->
+<div>
+{%for task in tasks%}
+    <p>
+        <input type="checkbox" id="{{task.id}}" name="{{task.id}}">
+        <label for="{{task.id}}">{{task}}</label>
+
+<!--        delete task -->
+        <form method="post">
+            {% csrf_token%}
+            <input type="hidden" value="{{task.id}}" name="task_id">
+            <input type="submit" value="Delete">
+        </form>
+
+<!--        update task     -->
+        <form action="{% url 'update' task.id %}">
+            {% csrf_token %}
+            <input type="hidden" value="{{task.id}}" name="update_task">
+            <input type="submit" value="Update">
+        </form>
+
+    </p>
+{% endfor %}
+</div>
+
+{% endblock %}

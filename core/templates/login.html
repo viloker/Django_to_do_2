@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<h1>Please create your account here</h1>
+<form method="post">
+    {% csrf_token %}
+    <p>Enter your email:
+        {{forms.email}}</p>
+    <p>Here your password
+        {{forms.password}}
+    </p>
+    <input type="submit">
+</form>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title%} Update {% endblock %}
+{% block body%}
+<h2>Your tasks</h2>
+<p>{{task}}</p>
+
+<form method="post">
+    {% csrf_token %}
+    <label for="new_task">Update to:</label>
+    <input type="text" name="new_task" id="new_task">
+    <input type="submit" value="Update">
+</form>
+{% endblock %}
